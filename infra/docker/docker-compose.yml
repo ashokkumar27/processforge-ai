@@ -1,0 +1,59 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: processforge-postgres
+    environment:
+      POSTGRES_DB: processforge
+      POSTGRES_USER: processforge
+      POSTGRES_PASSWORD: processforge
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U processforge -d processforge']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: processforge-redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+
+  minio:
+    image: minio/minio:latest
+    container_name: processforge-minio
+    command: server /data --console-address ':9001'
+    environment:
+      MINIO_ROOT_USER: processforge
+      MINIO_ROOT_PASSWORD: processforge123
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - minio_data:/data
+
+  flowable:
+    image: flowable/flowable-ui:latest
+    container_name: processforge-flowable
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+
+  kie-placeholder:
+    image: nginx:1.27-alpine
+    container_name: processforge-kie-placeholder
+    ports:
+      - '8090:80'
+    volumes:
+      - ./kie-placeholder.html:/usr/share/nginx/html/index.html:ro
+
+volumes:
+  postgres_data:
+  redis_data:
+  minio_data:

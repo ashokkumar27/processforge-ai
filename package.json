@@ -1,0 +1,17 @@
+{
+  "name": "processforge-ai",
+  "private": true,
+  "version": "0.2.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace @processforge/web run dev",
+    "dev:api": "npm --workspace @processforge/api run start:dev",
+    "seed:api": "npm --workspace @processforge/api run seed",
+    "test:web": "npm --workspace @processforge/web run test",
+    "test:api": "npm --workspace @processforge/api run test",
+    "build": "npm run -ws build"
+  }
+}

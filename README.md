@@ -21,6 +21,7 @@ Initial scaffold for ProcessForge AI with web, API, AI service, shared packages,
 docker compose -f infra/docker/docker-compose.yml up -d
 ```
 
+<<<<<<< create-initial-monorepo-structure-for-processforge-ai-7rsw96
 ### API app
 
 ```bash
@@ -36,6 +37,22 @@ npm run seed
 cd apps/web
 npm install
 npm run dev
+=======
+### Web app
+
+```bash
+cd apps/web
+npm install
+npm run dev
+```
+
+### API app
+
+```bash
+cd apps/api
+npm install
+npm run start:dev
+>>>>>>> main
 ```
 
 ### AI service

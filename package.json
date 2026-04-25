@@ -12,6 +12,8 @@
     "seed:api": "npm --workspace @processforge/api run seed",
     "test:web": "npm --workspace @processforge/web run test",
     "test:api": "npm --workspace @processforge/api run test",
-    "build": "npm run -ws build"
+    "build": "npm run -ws build",
+    "lint:api": "npm --workspace @processforge/api run lint",
+    "lint:web": "npm --workspace @processforge/web run lint"
   }
 }

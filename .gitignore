@@ -1,0 +1,15 @@
+node_modules
+.pnpm-store
+.nuxt
+.output
+.env
+.env.*
+*.log
+dist
+coverage
+__pycache__
+*.pyc
+.venv
+.DS_Store
+.idea
+.vscode
